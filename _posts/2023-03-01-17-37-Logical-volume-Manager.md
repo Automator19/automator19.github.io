@@ -1,6 +1,6 @@
 ---
 layout: post
-title: my first post
+title: Logical Volume Manager
 catagory: [Linux, Storage]
 ---
 
