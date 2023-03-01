@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Logical Volume Manager
-catagory: [Linux, Storage]
+catagory: [Linux,Storage]
 ---
 
 * Add disk via VC - Edit setting on VM, Add a new disk ( separate disks for each VGs)
