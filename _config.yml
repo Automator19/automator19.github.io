@@ -14,14 +14,14 @@ lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone:
+timezone: 
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Jatin's Blog                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Keep Learning  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
@@ -30,7 +30,7 @@ description: >-                        # used by seo meta and the atom feed
 url: ''
 
 github:
-  username: github_username             # change to your github username
+  username: Automator19            # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -78,10 +78,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: 
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://scontent.ftlv23-1.fna.fbcdn.net/v/t1.6435-9/123008937_3595958123797459_4544990817727151340_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9267fe&_nc_ohc=PA4N2uY7PIQAX8C_0rV&_nc_ht=scontent.ftlv23-1.fna&oh=00_AfCRfvghsGot-P6vvh2_Wjgi-Ixxb1601MhGUmZNWkBBRw&oe=642701D6
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -198,3 +198,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+# added this line to host website on 0.0.0.0 rather than 127.0.0.1
+host: 0.0.0.0
