@@ -14,12 +14,12 @@ lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: 
+timezone: Europe/London
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Jatin's Blog                          # the main title
+title: Jatin's Tech Blog                          # the main title
 
 tagline: Keep Learning  # it will display as the sub-title
 
@@ -27,7 +27,7 @@ description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://automator19.github.io/'
 
 github:
   username: Automator19            # change to your github username
@@ -38,7 +38,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: mytest
+  name: JP
   email: example@domain.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -71,7 +71,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:  [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
