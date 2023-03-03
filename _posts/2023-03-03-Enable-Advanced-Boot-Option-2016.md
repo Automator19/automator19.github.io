@@ -17,7 +17,8 @@ Follow these instructions to to enable advanced boot option on Windows VM ruinni
   ```
 * Reboot the server. 
 
-* You may get error bcdedit boot config could not be opened, this is due to pvscsi drivers are not loading, fix is below
+* You may get error bcdedit boot config could not be opened, this is due to pvscsi drivers are not loading,  fix is below. 
+
      * Click on Re-Install Vmtools 
      * CD into CD-ROM drive
      * Browse to  Program Files\Vmware\VMWare Tools\Drivers\pvscsi\Win8\amd64
