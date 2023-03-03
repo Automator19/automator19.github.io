@@ -15,7 +15,6 @@ Follow these instructions to to enable advanced boot option on Windows VM ruinni
   ```cmd
   bcdedit /set {globasettings} advancedoptions true and bcdedit /set {default} recoveryenabled no
   ```
-
 * Reboot the server. 
 
 * You may get error bcdedit boot config could not be opened, this is due to pvscsi drivers are not loading, fix is below
