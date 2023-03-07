@@ -26,7 +26,7 @@ category: [AWS]
 
 # How does it look like in a diagram ?
 
-[Diagram](/assets/images/connect-lambda-to-vpc.JPG)
+![Diagram](/assets/images/connect-lambda-to-vpc.JPG)
 
 
 # How do you connect Lambda function to VPC ?
