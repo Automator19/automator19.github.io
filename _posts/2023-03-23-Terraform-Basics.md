@@ -1,8 +1,28 @@
 ---
 layout: post
-title: Terraform Language Basics
+title: Terraform Basics
 category: [Terraform]
 ---
+
+# Table of Contents
+<!-- TOC -->
+
+- [Table of Contents](#table-of-contents)
+- [Terraform Configuration Syntax](#terraform-configuration-syntax)
+- [Arguments, Attributes and Meta-Arguments](#arguments-attributes-and-meta-arguments)
+    - [Arguments](#arguments)
+    - [Attributes](#attributes)
+    - [Meta-arguments](#meta-arguments)
+- [Terraform Top-Level Blocks](#terraform-top-level-blocks)
+- [Fundamental Blocks](#fundamental-blocks)
+    - [Terraform block](#terraform-block)
+    - [Provider Block](#provider-block)
+    - [Resource Block](#resource-block)
+- [Terraform State File](#terraform-state-file)
+- [Terraform Dependency Lock File](#terraform-dependency-lock-file)
+- [Terraform Desired & Current States](#terraform-desired--current-states)
+
+<!-- /TOC -->
 
 - Terraform uses HCL - Hashicorp Language
 - Code in Terraform langugae is stored in plain text files with .tf file extension.
@@ -14,16 +34,8 @@ category: [Terraform]
 - Terraform language consist of mainly 4 parts
 
 1. Blocks 
-    - Block is a container for the content like 
-        - Terraform Settings block
-        - Provider Block
-        - Resource Block
-        - Input Variable Block
-        - Output variable block
-        - Local values block
-        - data sources block
-        - modules block
-
+    - Block is a container for the content like resources, providers, configs etc. 
+      
 2. Arguments
     - Argument assisngs a value to a particular name
     - As per code below **Identifier** before the equal sign the **Argument Name** and **Expresssion** after equal sign is **Argument Value**
@@ -99,6 +111,7 @@ resource "aws_instance" "ec2demo" { # BLOCK
 
 
 # Fundamental Blocks
+
 ## Terraform block
     - Required Terraform version
     - List required providers
@@ -115,3 +128,45 @@ resource "aws_instance" "ec2demo" { # BLOCK
     - Resource Syntax - How to declare resources ?
     - Resource Behavior - How Terraform handles resources declarations?
     - provisioners - We can configure resources post-creation actions
+
+# Terraform State File
+- Terraform state file is creted after issuing terraform apply" and once infrastructed is cretaed on cloud.
+- It stores state about your managed infrastructe and configureation
+- This state is used by Terraform to map real world resources to your configuration (.tf files), keep track of metadata and to improve performance for large infrastructure
+- This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely for team environment. 
+- if you delete state file by mistake, Terraform will assume it hasn't created any state and will try to create it again and you will end up with duplicate resources
+- you can try using terraform.tfstate.backup file to simplify recovery. 
+- Best place to store tfstate will be on a s3 bucket with version control enabled. 
+
+# Terraform Dependency Lock File
+- Every terraform project has external dependencies on code that does not exist within the project itself.
+- These dependencies rely on terraform providers and modules that may exist outside of the code base. 
+- There are two dependency types
+    - Terraform providers - These are the plugins that required to work with external systems such as AWS. e.g required provider version, required terraform version
+    - Terraform modules   - These are reusabe groups of terraform code hosted on terraform registry. 
+ 
+# Terraform Desired & Current States
+- Desired state is Terraform configuration file ( or tf files)
+- Current State is deployed real world resources. 
+- Terraform stat keeps track of current state config and gets updated when desired state configs are deployed. 
+
+# Terraform Variables
+- There are three type of variables used in terraform
+
+## Input Variables 
+- Serves as parameters for a terraform module, allowing aspects for module to be customized without altering the module's own source code and allowing modules to be shared between different configurations. 
+- There are multiple ways to pass variale values
+    - Basics
+    - When prompted during terraform plan or apply
+    - Override default variable using cli argument -var
+    - Overrise default variable values using env variables (TF_var_aa)
+    - Provide input variables using terraform.tfvars files
+    - Provide input variables using <any-name>.tfvars file with CLI argument -var-file
+    - Provide input variables using auto.tfvars files
+    - List and Map
+    - Implement custom validation rules in variables
+    - Protect Sensitive input variables
+
+## Output Variables
+
+## Local Variables
