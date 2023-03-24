@@ -21,6 +21,10 @@ category: [Terraform]
 - [Terraform State File](#terraform-state-file)
 - [Terraform Dependency Lock File](#terraform-dependency-lock-file)
 - [Terraform Desired & Current States](#terraform-desired--current-states)
+- [Terraform Variables](#terraform-variables)
+    - [Input Variables](#input-variables)
+    - [Output Variables](#output-variables)
+    - [Local Variables](#local-variables)
 
 <!-- /TOC -->
 
@@ -168,5 +172,9 @@ resource "aws_instance" "ec2demo" { # BLOCK
     - Protect Sensitive input variables
 
 ## Output Variables
+- Output variables are like return values of a terraform module and have severa uses
+- A root module can use output to print values in the CLI output after running terraform apply. 
+- A chils module can use outputs to expose a subset of its resource attrivute to a parent module
+- when using remote state, root module outputs can be accesses by other configurations via terraform_remote_state data source
 
 ## Local Variables
