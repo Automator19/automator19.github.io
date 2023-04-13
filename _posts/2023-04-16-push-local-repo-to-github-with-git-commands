@@ -1,0 +1,34 @@
+---
+layout: post
+title: How to push local repo to github with git commands
+category: [Source Control]
+---
+1. Create an empty repo on your GitHub Account and obtain repo URL. 
+2. Create an empty repo or use existing one on your linux or mac machine
+3. Create README.md file
+	`echo "# packer" >> README.md`
+4. Initialize git in the current directory.
+	`git init`
+5. Stage changes
+	`git add README.md`
+	
+6. Stage changes for all files in the directory
+	`git add .`
+	
+7. Set author identity
+	git config --global user.email "jatin@domain.com"
+	git config --global user.name "jatin"
+8. Commit changes
+	`git commit -m "first commit"`
+	
+9. Rename the branch ( from master to main)
+	`git branch -M main`
+	
+10. Add remote repository ( paste URL from Step1)
+	`git remote add origin https://github.com/Automator19/packer.git`
+	
+11. push changes to origin
+	`git push -u origin main`
+	
+12. Pull changes from origin ( Only required to pull new files from remote origin)
+	`git pull`
