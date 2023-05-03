@@ -42,3 +42,22 @@ When it comes to inter-site, the replication will happen via site links. The rep
 3. Click on the Link
 4. Set **Replication Every** e.g 180
 5. Set Cost if you have multiple site links setup
+
+
+# Useful commands
+
+watch replication changes with powershell 
+
+``` 
+while (1) {<command>; sleep 5}
+```
+
+Show Replication Summary
+```
+repadmin /replsummary
+```
+
+Show replication partner and status
+```
+repadmin /showrepl (for localhost)
+repadmin /showrepl dc1 ( for remote dc)
