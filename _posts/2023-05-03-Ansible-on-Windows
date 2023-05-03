@@ -1,0 +1,80 @@
+---
+layout: post
+title: Ansible On Windows
+category: [Windows, Ansible]
+---
+
+With Ansible on Windows, you can perform many tasks like deployments, managing windows servers, execute powershell scripts. 
+In this post we are going to connect to Windows Server 2022 from Ansible controller running ubuntu18 over WinRM
+
+# Setting up WinRM listener on Windows 
+
+Run commands below to upgrade powershell and .net framework
+```
+$url = "https://raw.githubusercontent.com/jborean93/ansible-windows/master/scripts/Upgrade-PowerShell.ps1"
+$file = "$env:temp\Upgrade-PowerShell.ps1"
+$username = "vagrant"
+$password = "vagrant"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+&$file -Version 5.1 -Username $username -Password $password -Verbose
+```
+
+Download and Run the script below to configure WinRM
+```
+$url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
+$file = "$env:temp\ConfigureRemotingForAnsible.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+powershell.exe -ExecutionPolicy ByPass -File $file
+winrm enumerate winrm/config/Listener
+```
+
+Set winrm to allow HTTP Traffic
+
+` winrm set winrm/config/service '@{AllowUnencrypted="true"}' `
+
+Set authentication to basic
+
+` winrm set winrm/config/service/auth '@{Basic="true"}' `
+
+# Configure Ansible Controller
+
+Install pywinrm python module
+
+` pip3 install pywinrm `
+
+Now, Update the Host file to add Windows server IP address
+
+[win]
+192.168.0.100
+
+Define few required variables Ansible will use to connect to Windows hosts 
+```
+mkdir /etc/ansible/groups_vars
+touch /etc/ansible/group_vard/win.yml
+chmod -R 777 /etc/ansible
+```
+
+Add below lines in win.yml file
+```
+---
+ansible_user: vagrant
+ansible_password: vagrant
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+ansible_winrm_transport: basic
+ansible_winrm_port: 5985
+```
+
+# Test Connectivity
+
+` ansible win -m win_ping `
+
+Run command above and you should get response below
+```
+192.168.0.100 | SUCCESS => {
+
+"changed": false,
+"ping": "pong"
+}
+```
