@@ -178,3 +178,20 @@ resource "aws_instance" "ec2demo" { # BLOCK
 - when using remote state, root module outputs can be accesses by other configurations via terraform_remote_state data source
 
 ## Local Variables
+- A local value assigns a name to an expression, so you can use the name multiple times within a module instead of repeating the expression.
+- The expressions in local values are not limited to literal constants; they can also reference other values in the module in order to transform or combine - them, including variables, resource attributes, or other local values
+
+# How to use terraform.tfvars and .auto.tfvars ?
+
+- In terraform you must declare input variables (Either Blank or defaults) in a variable.tf file.
+- Now value can be defined in this file or you can define them in terraform.tfvars or auto.tfvars files. 
+- .tfvars will take precedence when applying value during terraform apply
+    
+    example if you define environment name is "dev" in variables.tf file
+               and define environment name "test" in tfvars file. Terraform will use "test" from tfvars , variables.tf will be ignored.
+
+so why would you use exmaple vpc.auto.tfvars and not define them in terraform.tfvars file ? 
+This is to separate vpc related values from generic values. You can define values in any of the files.
+
+
+
