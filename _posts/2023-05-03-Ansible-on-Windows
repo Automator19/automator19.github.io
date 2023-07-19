@@ -3,7 +3,7 @@ layout: post
 title: Ansible On Windows
 category: [Windows, Ansible]
 ---
-.
+
 With Ansible on Windows, you can perform many tasks like deployments, managing windows servers, execute powershell scripts. 
 In this post we are going to connect to Windows Server 2022 from Ansible controller running ubuntu18 over WinRM
 
