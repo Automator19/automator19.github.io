@@ -3,7 +3,7 @@ layout: post
 title: AD Replication Types and Configuration
 category: [Windows]
 ---
-
+.
 Active Directory Infrastructure is depending on healthy replication. Every domain controller in the network should aware of every change which has made. When domain controller triggers a sync, it passes the data through the physical network to the destination.
 
 In active directory environment, there are mainly two types of replications.
