@@ -13,7 +13,7 @@ In active directory environment, there are mainly two types of replications.
 
 # Intra-Site Replication
 
-![External](/assets/images/Intra-Site-Replication.jpg)
+![External](/assets/images/Intra-Site-Replication.png)
 
 As the name confirms, this covers the replication happens with in a site. By default, (according to Microsoft) any domain controller will aware of any directory update within 15 seconds. Within site despite the number of domain controllers, any directory update will be replicate in less than one minute. 
 Within the site, the replication connections are performing in ring topology. Which mean an any give domain controller have two replication links (of cause if there is minimum of three domain controllers). this architecture will prevent domain controllers having endless replication loops. As example if there are 5 domain controllers and if all are connected to each other with one-to-one connection each domain controller will have 4 connection and when there is an update in one of the domain controller it will need to advertise it to 4 domain controllers. then the first one to receive update will advertise to its 4 connected domain controllers and its go on and on. It will be too much replication processes to advertise, listen and sort out the conflicts. But in ring topology, despite the number of domain controllers in the site, any given domain controller only need to advertise or listen to two domain controllers in any given time. This replication topology is no need to configure manually and active directory will automatically determine the connections it need to make. When number of domain controllers grow, the replication time can grow as well as its in ring topology. But to avoid the latency active directory will create additional connections. This is also determined automatically and we do not need to worry about these replication connections. 
@@ -29,7 +29,7 @@ Within the site, the replication connections are performing in ring topology. Wh
 
 # Inter-Site Replication
 
-![External](/assets/images/Inter-Site-Replication.jpg)
+![External](/assets/images/Inter-Site-Replication.png)
 
 If active directory infrastructure contains more than one site, a change happens in one site need to replicate over to other sites. This is called as inter-site replication and its topology is different from the intra-site replication. Replication with in site is always benefited from the high-speed links. But when it comes to between sites bandwidth, latency and reliability comes to considerations. In previous section, we discussed about site-links, site costs and replication schedules when we can use to control the inter-site replication. 
 
